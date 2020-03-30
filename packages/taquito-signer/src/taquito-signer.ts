@@ -93,6 +93,8 @@ export class InMemorySigner {
       bb = mergebuf(watermark, bb);
     }
 
+    console.log(`Signing over: ${Buffer.from(bb).toString('hex')}`);
+
     // Ensure sodium is ready before calling crypto_generichash otherwise the function do not exists
     await sodium.ready;
     const bytesHash = toBuffer(sodium.crypto_generichash(32, bb));
